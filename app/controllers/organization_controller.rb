@@ -1,5 +1,5 @@
 class OrganizationController < ApplicationController
     def index
-        @organizations = Organization.all
+        @organizations = current_user.organizations
     end
 end
