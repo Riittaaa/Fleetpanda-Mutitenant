@@ -22,6 +22,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+  <%= f.label :organization_id, "Organization" %><br />
+  <%= f.select :organization_id, options_for_select(@organizations.collect { |u| [u.name, u.id] }, prompt: "Select Organization") %>
+</div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
