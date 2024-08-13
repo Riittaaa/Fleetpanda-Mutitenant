@@ -1,0 +1,5 @@
+<h2>Members</h2>
+<% @membership.each do |membership| %>
+    <li><%= membership.user.email %></li>
+
+    <% end %>

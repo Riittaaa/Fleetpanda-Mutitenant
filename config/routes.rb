@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :blogs
-  resources :memberships
-  resources :models
+  # get "organizations", to: "organization#index"
+  resources :organizations do 
+    resources :memberships
+  end
+  
   devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
@@ -15,6 +18,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
    root "home#index"
    get "dashboard", to: "home#dashboard"
-   get "organizations", to: "organization#index"
    
 end

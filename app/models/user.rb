@@ -15,7 +15,6 @@ class User < ApplicationRecord
 
   def create_membership
     return unless organization_id.present?
-
     memberships.create(organization_id: organization_id)
   end
 end
