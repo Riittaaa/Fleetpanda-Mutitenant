@@ -23,9 +23,9 @@
   </div>
 
   <div class="field">
-  <%= f.label :organization_id, "Organization" %><br />
-  <%= f.select :organization_id, options_for_select(@organizations.collect { |u| [u.name, u.id] }, prompt: "Select Organization") %>
-</div>
+    <%= f.label :organization_id, "Organization" %><br />
+    <%= f.collection_select :organization_id, @organizations, :id, :name, prompt: "Select an organization", required: true %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

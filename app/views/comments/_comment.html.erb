@@ -1,0 +1,24 @@
+<% @blog.comments.each do |comment| %>
+  <div>
+    <p> 
+      <strong>Commenter: </strong>
+      <span><%= comment.commenter %></span>
+    </p>
+
+    <p> 
+      <strong>Comment: </strong>
+      <span><%= comment.comment %></span>
+    </p>
+
+  </div>
+    <% if current_user && current_user.email == comment.commenter %>
+  <%= link_to "Delete comment", [comment.blog, comment] ,data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                }%>
+  <% end %>
+<% end %>
+
+  
+
+

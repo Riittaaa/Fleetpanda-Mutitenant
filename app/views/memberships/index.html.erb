@@ -1,4 +1,13 @@
+<h2>Invite Members</h2>
+
+<%= form_with url: invite_organization_memberships_path do |form| %>
+    <%= form.text_field :email, placeholder: "Email" %>
+    <%= form.submit "Invite" %>
+  <% end %>
+
+
 <h2>Members</h2>
+
 <% @membership.each do |membership| %>
     <li><%= membership.user.email %></li>
 

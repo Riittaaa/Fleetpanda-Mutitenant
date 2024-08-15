@@ -3,7 +3,4 @@ class OrganizationsController < ApplicationController
     @organizations = current_user.organizations
   end
 
-  def show
-    # @organizations = current_user.organizations
-  end
 end

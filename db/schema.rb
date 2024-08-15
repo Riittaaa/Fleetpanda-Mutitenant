@@ -10,14 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_13_052056) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_14_070611) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.integer "organization_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", default: 1, null: false
     t.index ["organization_id"], name: "index_blogs_on_organization_id"
+    t.index ["user_id"], name: "index_blogs_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commenter"
+    t.text "comment"
+    t.integer "blog_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_comments_on_blog_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -59,6 +70,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_13_052056) do
   end
 
   add_foreign_key "blogs", "organizations"
+  add_foreign_key "blogs", "users"
+  add_foreign_key "comments", "blogs"
   add_foreign_key "memberships", "organizations"
   add_foreign_key "memberships", "users"
 end

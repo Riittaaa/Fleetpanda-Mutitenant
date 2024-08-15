@@ -1,15 +1,16 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
+  # before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   # GET /blogs or /blogs.json
-  # def index
-
-  #   @blogs = Blog.all
-  # end
   def index
     @blogs = Blog.where(organization_id: current_user.organizations.pluck(:id))
   end
   
+  def my_blogs
+    @blogs = Blog.where(user_id: current_user.id, organization_id: current_user.organizations.pluck(:id))
+  end
 
   # GET /blogs/1 or /blogs/1.json
   def show
@@ -25,13 +26,13 @@ class BlogsController < ApplicationController
   end
 
   # POST /blogs or /blogs.json
-def create
-  @blog = Blog.new(blog_params)
-  # @blog.organization_id = current_user.organization_id 
-  @blog.organization_id = current_user.organizations.first.id
+  def create
+    @blog = Blog.new(blog_params)
+    # @blog.organization_id = current_user.organization_id 
+    @blog.organization_id = current_user.organizations.first.id
+    @blog.user_id = current_user.id 
 
-
-  respond_to do |format|
+    respond_to do |format|
     if @blog.save
       format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
       format.json { render :show, status: :created, location: @blog }
@@ -41,9 +42,6 @@ def create
     end
   end
 end
-
-
-
 
   # PATCH/PUT /blogs/1 or /blogs/1.json
   def update
@@ -69,13 +67,17 @@ end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_blog
       @blog = Blog.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
+  
+    def authorize_user!
+      unless @blog.user == current_user
+        redirect_to blogs_path, alert: "You are not authorized to perform this action."
+      end
+    end
+  
     def blog_params
-      params.require(:blog).permit(:title, :body, :organization_id)
+      params.require(:blog).permit(:title, :body, :organization_id, :user_id)
     end
 end

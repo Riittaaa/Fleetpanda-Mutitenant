@@ -1,0 +1,14 @@
+<h1>My Blogs</h1>
+
+<% if @blogs.any? %>
+  <% @blogs.each do |blog| %>
+    <div class="blog">
+      <h2><%= link_to blog.title, blog_path(blog) %></h2>
+      <p><%= truncate(blog.body, length: 100) %></p>
+      <small>Posted on <%= blog.created_at.strftime("%B %d, %Y") %></small>
+    </div>
+  <br/>
+  <% end %>
+<% else %>
+  <p>You haven't posted any blogs yet.</p>
+<% end %>

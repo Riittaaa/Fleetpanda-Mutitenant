@@ -1,0 +1,49 @@
+/* sign_up.css.scss */
+
+/* form {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  } */
+  
+  /* form .field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+  } */
+  
+  /* form .field input[type="email"],
+  form .field input[type="password"],
+  form .field select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  form .actions input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  form .actions input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .error_messages {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+  } */
