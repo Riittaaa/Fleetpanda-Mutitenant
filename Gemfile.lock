@@ -110,8 +110,14 @@ GEM
       devise (>= 4.6)
     drb (2.2.1)
     erubi (1.13.0)
+    fiber-storage (1.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    graphiql-rails (1.10.1)
+      railties
+    graphql (2.3.14)
+      base64
+      fiber-storage
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -334,6 +340,8 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   devise_invitable (~> 2.0)
+  graphiql-rails
+  graphql (~> 2.3)
   importmap-rails
   jbuilder
   puma (>= 5.0)
