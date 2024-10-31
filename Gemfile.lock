@@ -115,7 +115,7 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.1)
       railties
-    graphql (2.3.14)
+    graphql (2.4.0)
       base64
       fiber-storage
     i18n (1.14.5)
@@ -341,7 +341,7 @@ DEPENDENCIES
   devise (~> 4.9)
   devise_invitable (~> 2.0)
   graphiql-rails
-  graphql (~> 2.3)
+  graphql (~> 2.4)
   importmap-rails
   jbuilder
   puma (>= 5.0)
